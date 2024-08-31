@@ -10,6 +10,9 @@ ratingButton.forEach((btn) => {
   btn.addEventListener("click", () => {
     if (btn.classList.contains("active")) {
       btn.classList.remove("active");
+      rating = "";
+      submitButton.disabled = true;
+      submitButton.classList.add("disabled");
       return;
     }
     ratingButton.forEach((btn) => btn.classList.remove("active"));
