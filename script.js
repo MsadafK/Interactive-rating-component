@@ -18,14 +18,16 @@ ratingButton.forEach((btn) => {
     ratingButton.forEach((btn) => btn.classList.remove("active"));
     btn.classList.add("active");
     rating = btn.innerText;
-
-    if (rating) {
-      submitButton.disabled = false;
-      submitButton.classList.remove("disabled");
-    }
+    submitButton.disabled = false;
+    submitButton.classList.remove("disabled");
   });
 });
 
-submitButton.addEventListener("click", () => {
-  localStorage.setItem("rating", rating);
+submitButton.addEventListener("click", (event) => {
+  if (rating === "") {
+    event.preventDefault(); // Prevent navigation
+    alert("Please select a rating before submitting.");
+  } else {
+    localStorage.setItem("rating", rating); // Store the rating
+  }
 });
